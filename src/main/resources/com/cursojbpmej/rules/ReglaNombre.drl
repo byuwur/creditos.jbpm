@@ -1,0 +1,15 @@
+package com.cursojbpmej.rules;
+import com.cursojbpmej.model.bo.Persona;
+
+rule "ValidarAprobacion"
+no-loop
+ruleflow-group "ReglaNombre"
+    when 
+        $p: Persona (aprobado == "false")
+    then 
+       modify ($p) {
+			setNombres("DENEGADO "),
+			setPrimerApellido("DENEGADO "),
+			setSegundoApellido("DENEGADO ")
+		}
+    end

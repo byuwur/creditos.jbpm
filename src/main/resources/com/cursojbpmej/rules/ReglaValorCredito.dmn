@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://github.com/kiegroup/drools/kie-dmn/_2D54BD48-2652-4F8C-9F68-C503DB86A6C7" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_E4B4DC18-9607-4307-A8F8-7AF31871C154" name="ReglaValorCredito" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://github.com/kiegroup/drools/kie-dmn/_2D54BD48-2652-4F8C-9F68-C503DB86A6C7">
+  <dmn:extensionElements/>
+  <dmn:inputData id="_5148F08B-49D5-49AC-98FF-85F3A23480C5" name="valorCredito">
+    <dmn:variable id="_F8DB5F2B-7B83-43A8-92C3-CBD62A95255C" name="valorCredito"/>
+  </dmn:inputData>
+  <dmn:inputData id="_85DAB8ED-9000-4417-B3DC-0D267580DC85" name="endeudamiento">
+    <dmn:variable id="_42E46C7C-EDF1-4AA3-AC4A-16FD05C86395" name="endeudamiento"/>
+  </dmn:inputData>
+  <dmn:decision id="_C5498A41-EC21-4353-9E1E-4F1619B686A9" name="validarValorCredito">
+    <dmn:variable id="_E8423728-303C-4F59-8E6D-8E59F7795355" name="validarValorCredito" typeRef="string"/>
+    <dmn:informationRequirement id="_7D4CD521-CE95-412D-8A29-7496038AE11E">
+      <dmn:requiredInput href="#_5148F08B-49D5-49AC-98FF-85F3A23480C5"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_305AC0A8-C03C-4AD9-9D9F-9A28DD1BE235">
+      <dmn:requiredInput href="#_85DAB8ED-9000-4417-B3DC-0D267580DC85"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_1CB1631E-EB5E-4C3A-AC85-E44DA5BB400F" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_7FCB552F-A688-4692-BDAE-1234B3C1C619">
+        <dmn:inputExpression id="_50644B0F-C016-4434-A11E-52AC6156AF52" typeRef="number">
+          <dmn:text>valorCredito</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_4EDEE9DD-C4A2-422E-9999-71856968DEEC" typeRef="string"/>
+      <dmn:rule id="_00306B8F-936F-4319-B8F5-70D3BC5193C1">
+        <dmn:description>"Monto sin amortizar"</dmn:description>
+        <dmn:inputEntry id="_3DF91C7F-F9B5-42D7-86B7-496A98B3CF72">
+          <dmn:text>&gt;endeudamiento</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E629EB59-A516-43F3-8FE0-E66D2AD802D1">
+          <dmn:text>"sa"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_AF60E331-04D9-4BD1-8467-528850B1ABD3">
+        <dmn:description>"Crédito aprobado"</dmn:description>
+        <dmn:inputEntry id="_004E2653-2AE7-4A96-9B61-C15D80B6136D">
+          <dmn:text>&gt;endeudamiento</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_98B90847-5CB9-4E09-AAB8-52FC2A459394">
+          <dmn:text>"ap"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_1CB1631E-EB5E-4C3A-AC85-E44DA5BB400F">
+            <kie:width>50.0</kie:width>
+            <kie:width>132.0</kie:width>
+            <kie:width>152.0</kie:width>
+            <kie:width>149.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_C5498A41-EC21-4353-9E1E-4F1619B686A9" dmnElementRef="_C5498A41-EC21-4353-9E1E-4F1619B686A9" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="306" y="139" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_85DAB8ED-9000-4417-B3DC-0D267580DC85" dmnElementRef="_85DAB8ED-9000-4417-B3DC-0D267580DC85" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="285" y="27" width="140" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_5148F08B-49D5-49AC-98FF-85F3A23480C5" dmnElementRef="_5148F08B-49D5-49AC-98FF-85F3A23480C5" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="155" y="138" width="105" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_7D4CD521-CE95-412D-8A29-7496038AE11E" dmnElementRef="_7D4CD521-CE95-412D-8A29-7496038AE11E">
+        <di:waypoint x="260" y="163"/>
+        <di:waypoint x="306" y="164"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_305AC0A8-C03C-4AD9-9D9F-9A28DD1BE235" dmnElementRef="_305AC0A8-C03C-4AD9-9D9F-9A28DD1BE235">
+        <di:waypoint x="425" y="52"/>
+        <di:waypoint x="306" y="164"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>

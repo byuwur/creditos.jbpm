@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://github.com/kiegroup/drools/kie-dmn/_D4A3EC8E-8A9A-43F9-9815-0B74AA1A3F54" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_4AD41360-311F-4CEA-9C29-16778B1D4746" name="ReglaValidarCredito" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://github.com/kiegroup/drools/kie-dmn/_D4A3EC8E-8A9A-43F9-9815-0B74AA1A3F54">
+  <dmn:extensionElements/>
+  <dmn:inputData id="_302A21EA-18BF-4BC3-A923-DA5BE5146120" name="valorCredito">
+    <dmn:variable id="_2A996EF1-8799-421D-834D-02AB17FD49D2" name="valorCredito"/>
+  </dmn:inputData>
+  <dmn:decision id="_C4B89976-0266-458F-9E6F-0D3EFF993A8D" name="validarCredito">
+    <dmn:variable id="_A38B6088-4C7E-483C-84EC-D80FA9B7D9C3" name="validarCredito" typeRef="string"/>
+    <dmn:informationRequirement id="_6322297F-7BB3-41D5-8A74-7BA6DE3CB701">
+      <dmn:requiredInput href="#_302A21EA-18BF-4BC3-A923-DA5BE5146120"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_3502DFFC-88F4-4480-8A39-DF92314EBEB5" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_FD50B4DB-33CB-41D8-992D-37E3DB37EFEF">
+        <dmn:inputExpression id="_2FC2722F-9EF1-4E64-A9D6-13D65BBF55DA" typeRef="number">
+          <dmn:text>valorCredito</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_AA3BE4BD-09DE-4ECC-BF74-4DBBCF37F3A6" typeRef="string"/>
+      <dmn:rule id="_F070EC31-306F-4373-AA86-537ECB4F665F">
+        <dmn:description>"Monto excedido"</dmn:description>
+        <dmn:inputEntry id="_B642FD93-1B0C-4A93-9C46-AA8FA852BD33">
+          <dmn:text>&gt;10000000</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_1D7D6068-3F07-49D6-968C-67D88A5C84A5">
+          <dmn:text>"mex"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_C83ECD13-6D45-48EF-8015-E5C9158C82A9">
+        <dmn:description>"Monto aprobado"</dmn:description>
+        <dmn:inputEntry id="_8E2B076F-7E93-44AD-A205-E1CEE2BE4AAC">
+          <dmn:text>&lt;10000000</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A8B88181-8208-41B5-8A75-0AF90AF04C47">
+          <dmn:text>"map"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_3502DFFC-88F4-4480-8A39-DF92314EBEB5">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>121.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_C4B89976-0266-458F-9E6F-0D3EFF993A8D" dmnElementRef="_C4B89976-0266-458F-9E6F-0D3EFF993A8D" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="349" y="62" width="112" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_302A21EA-18BF-4BC3-A923-DA5BE5146120" dmnElementRef="_302A21EA-18BF-4BC3-A923-DA5BE5146120" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="169" y="62" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_6322297F-7BB3-41D5-8A74-7BA6DE3CB701" dmnElementRef="_6322297F-7BB3-41D5-8A74-7BA6DE3CB701">
+        <di:waypoint x="269" y="87"/>
+        <di:waypoint x="349" y="87"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
